@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix | About Us</title>
+    <link rel="icon" href="data:,">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95); /* opacity နည်းနည်းတင်လိုက်ပါတယ် */
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(225, 29, 72, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #e11d48, #fb7185);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <div class="bg-rose-600 p-6 text-white rounded-b-[3rem] shadow-2xl flex items-center gap-4 sticky top-0 z-50">
+        <a href="index.html" class="text-2xl hover:scale-110 transition-all">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="text-xl font-bold tracking-tight">About Us</h1>
+    </div>
+
+    <div class="p-6 max-w-2xl mx-auto pb-20">
+
+        <div class="text-center my-12">
+            <div class="w-24 h-24 bg-white rounded-[2rem] shadow-xl flex items-center justify-center mx-auto mb-6 transform rotate-12 border-2 border-rose-50">
+                <i class="fas fa-dna text-4xl text-rose-600"></i>
+            </div>
+            <h2 class="text-3xl font-black text-slate-800 mb-4">The <span class="gradient-text">Helix</span> Project</h2>
+            <p class="text-slate-700 text-sm leading-relaxed px-4 font-medium"> Born from a vision to save lives through technology. Helix is more than just a website; it is a bridge built between hearts to ensure no one has to wait for life-saving blood.
+            </p>
+        </div>
+
+        <div class="flex items-center gap-3 mb-8 px-2">
+            <div class="h-[2px] flex-1 bg-rose-100"></div>
+            <span class="text-rose-500 font-bold text-[11px] uppercase tracking-[0.2em]">The Minds Behind Helix</span>
+            <div class="h-[2px] flex-1 bg-rose-100"></div>
+        </div>
+
+        <div class="space-y-6">
+            
+            <div class="glass-card p-8 rounded-[3rem] shadow-xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform text-slate-900">
+                    <i class="fas fa-terminal text-8xl"></i>
+                </div>
+                <div class="flex items-start gap-5">
+                    <div class="w-16 h-16 bg-slate-900 rounded-3xl flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-user-gear text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-800">Jem</h3>
+                        <p class="text-rose-600 font-bold text-[10px] uppercase tracking-wider mb-3">Project Admin & Backend</p>
+                        <p class="text-slate-700 text-xs leading-loose font-medium"> As the administrator, Jem leads the core development and system logic. Her focus is on building a reliable, secure foundation that handles emergency data with 100% accuracy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-[3rem] shadow-xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform text-rose-600">
+                    <i class="fas fa-wand-magic-sparkles text-8xl"></i>
+                </div>
+                <div class="flex items-start gap-5">
+                    <div class="w-16 h-16 bg-rose-500 rounded-3xl flex items-center justify-center text-white shadow-lg">
+                        <i class="fas fa-user-astronaut text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-800">Sunflower</h3>
+                        <p class="text-rose-600 font-bold text-[10px] uppercase tracking-wider mb-3">Project Owner & UI/UX</p>
+                        <p class="text-slate-700 text-xs leading-loose font-medium"> Sunflower is the creative engine. He defines the project vision and ensures the interface is empathetic and easy to use, making the donor-finding process stress-free for everyone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 bg-slate-900 p-8 rounded-[3rem] text-center text-white shadow-2xl">
+            <h4 class="text-lg font-bold mb-3">Future Vision</h4>
+            <p class="text-slate-300 text-xs leading-relaxed"> We are continuously updating Helix to integrate with local hospitals and automated response systems. This is just Version 1.0 of our commitment to Myanmar's healthcare.
+            </p>
+            <div class="mt-6 flex justify-center gap-4 opacity-70">
+                <i class="fab fa-github"></i>
+                <i class="fab fa-figma"></i>
+                <i class="fas fa-globe"></i>
+            </div>
+        </div>
+
+        <p class="text-center text-slate-600 text-[10px] font-bold mt-12 tracking-widest uppercase"> Designed & Developed with ❤️ by <span class="text-rose-600">Jem & Sunflower</span>
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

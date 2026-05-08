@@ -1,0 +1,62 @@
+/* Custom Blood Gradient */
+.bg-blood {
+    background: linear-gradient(180deg, #be123c 0%, #fb7185 100%);
+}
+
+/* Custom Input Styling */
+.custom-input {
+    width: 100%;
+    padding: 1.25rem;
+    background-color: #f8fafc;
+    border: 2px solid #f1f5f9;
+    border-radius: 1.25rem;
+    outline: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.custom-input:focus {
+    border-color: #f43f5e;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.1);
+}
+
+/* Background Setup with Image and Overlay */
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    /* Overlay for better readability over the background image */
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+                url('https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Fix background image while scrolling */
+}
+
+/* Glassmorphism Effect for the Main Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu Item Hover Effects */
+.menu-item {
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    border-color: #f43f5e; /* Rose 500 color */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.1);
+}
+
+/* Small improvement for Date inputs on mobile */
+input[type="date"].custom-input {
+    color: #475569;
+}

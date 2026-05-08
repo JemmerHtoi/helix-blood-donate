@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix | Blood Request</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Importing Plus Jakarta Sans to match index.html */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        html { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+
+        .custom-input::placeholder {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="bg-rose-600 p-6 text-white rounded-b-[2rem] shadow-lg flex items-center gap-4">
+        <a href="find-donor.html" class="text-2xl hover:opacity-80 transition">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="text-xl font-bold">Post Blood Request</h1>
+    </div>
+
+    <div class="p-6 max-w-xl mx-auto">
+        <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-rose-50">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="text-3xl">📢</span>
+                <p class="text-gray-500 text-sm">Fill in the details for emergency blood requirement.</p>
+            </div>
+
+            <form class="space-y-5">
+                <input type="text" id="pName" placeholder="Patient Name" 
+                    class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition text-gray-800">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <select id="pBlood" 
+                        class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition text-gray-800">
+                        <option value="Blood Group">Blood Group</option>
+                        <option value="A+">A+</option><option value="B+">B+</option><option value="O+">O+</option>
+                        <option value="AB+">AB+</option><option value="A-">A-</option><option value="B-">B-</option>
+                        <option value="O-">O-</option><option value="AB-">AB-</option>
+                    </select>
+                    <input type="number" id="pUnits" placeholder="Units Needed" 
+                        class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition text-gray-800">
+                </div>
+
+                <input type="text" id="pHospital" placeholder="Hospital Name" 
+                    class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition text-gray-800">
+
+                <input type="tel" id="pPhone" placeholder="Contact Phone" 
+                    class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition text-gray-800">
+
+                <input type="text" id="pAddress" placeholder="Location (e.g. Yangon, Mandalay)" 
+                    class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition text-gray-800">
+
+                <textarea id="pNote" placeholder="Additional Note (Optional)" rows="2" 
+                    class="w-full p-4 bg-rose-50/50 border border-rose-100 rounded-2xl focus:ring-2 focus:ring-rose-500 outline-none transition resize-none text-gray-800"></textarea>
+
+                <button type="button" onclick="saveRequest()" 
+                    class="w-full bg-rose-600 text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-rose-700 active:scale-95 transition-all">
+                    POST URGENT REQUEST
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    function saveRequest() {
+        // Get values from input fields
+        const name = document.getElementById('pName').value;
+        const blood = document.getElementById('pBlood').value;
+        const hospital = document.getElementById('pHospital').value;
+        const address = document.getElementById('pAddress').value;
+        const units = document.getElementById('pUnits').value;
+        const phone = document.getElementById('pPhone').value;
+
+        // Simple validation to check required fields
+        if(name === "" || blood === "Blood Group" || hospital === "" || address === "" || phone === "") {
+            alert("Please fill in the required fields!");
+            return;
+        }
+
+        // Storing data into an object
+        const urgentData = {
+            patientName: name,
+            bloodGroup: blood,
+            hospital: hospital, // Changed to match find-donor.js
+            location: address,
+            unitsNeeded: units,
+            phone: phone,       // Changed to match find-donor.js
+            timestamp: new Date().toLocaleString()
+        };
+
+        // Saving to localStorage using the key 'urgentRequest'
+        localStorage.setItem('urgentRequest', JSON.stringify(urgentData));
+
+        // Redirect back to find-donor.html
+        window.location.href = 'find-donor.html';
+    }
+</script>
+
+</body>
+</html>

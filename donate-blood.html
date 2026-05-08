@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix | Donate Blood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        html { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .custom-input {
+            width: 100%;
+            padding: 1rem;
+            background-color: #fff1f2;
+            border: 2px solid transparent;
+            border-radius: 1rem;
+            outline: none;
+            transition: 0.3s;
+            color: #1f2937;
+        }
+        .custom-input:focus { border-color: #e11d48; background-color: white; }
+        .custom-input::placeholder { font-size: 0.875rem; color: #9ca3af; }
+    </style>
+</head>
+<body class="bg-rose-600 min-h-screen flex items-center justify-center p-6">
+
+    <div class="bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden">
+        <a href="index.html" class="absolute top-6 left-6 text-gray-400 hover:text-rose-600 transition flex items-center gap-1">
+            <i class="fas fa-arrow-left text-sm"></i> Back
+        </a>
+
+        <div class="text-center mt-6 mb-8">
+            <span class="text-5xl">🩸</span>
+            <h2 class="text-2xl font-bold text-gray-800 mt-4">Donate Blood</h2>
+            <p class="text-gray-500 text-sm">Become a hero by sharing your blood.</p>
+        </div>
+
+        <form class="space-y-4">
+            <div>
+                <label class="text-xs font-bold text-gray-400 ml-2 uppercase">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your name" class="custom-input" required>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-xs font-bold text-gray-400 ml-2 uppercase">Blood Group</label>
+                    <select id="bloodGroup" class="custom-input">
+                        <option>A+</option><option>B+</option>
+                        <option>O+</option><option>AB+</option>
+                        <option>A-</option><option>B-</option>
+                        <option>O-</option><option>AB-</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-gray-400 ml-2 uppercase">Last Donate</label>
+                    <input type="date" id="lastDate" class="custom-input text-sm" required>
+                </div>
+            </div>
+
+            <div>
+                <label class="text-xs font-bold text-gray-400 ml-2 uppercase">Phone Number</label>
+                <input type="tel" id="phoneNumber" placeholder="09xxxxxxxxx" class="custom-input" required>
+            </div>
+
+            <div>
+                <label class="text-xs font-bold text-gray-400 ml-2 uppercase">Location (City)</label>
+                <input type="text" id="pLocation" placeholder="e.g. Yangon, Mandalay" class="custom-input" required>
+            </div>
+
+            <button type="button" id="registerBtn" onclick="saveDonor()" class="w-full bg-rose-600 text-white py-4 rounded-2xl font-bold text-center hover:bg-rose-700 active:scale-95 transition-all shadow-lg mt-4">
+                REGISTER AS DONOR
+            </button>
+        </form>
+    </div>
+
+    <script src="donate.js"></script>
+</body>
+</html>

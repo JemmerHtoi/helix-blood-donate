@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix | Blood</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        html { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .custom-input {
+            color: #1f2937 !important;
+        }
+        .custom-input::placeholder {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div id="registerBox" class="glass-card w-[90%] md:w-full md:max-w-md p-6 md:p-8 rounded-[2.5rem] mx-auto shadow-2xl">
+        <div class="flex items-center justify-between mb-6 relative h-12">
+    <a href="index.html" class="text-rose-600 hover:bg-rose-50 p-2 rounded-full transition text-xl z-10">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <h2 class="text-2xl md:text-3xl font-bold text-rose-600 absolute inset-0 flex items-center justify-center pointer-events-none">
+        Create Account
+    </h2>
+    <div class="w-10"></div> </div>
+
+        <form id="registerForm" class="space-y-4">
+            <input type="text" id="regName" placeholder="Full Name" required 
+                   class="w-full p-4 bg-rose-50/50 rounded-2xl border border-rose-100 focus:outline-none focus:ring-2 focus:ring-rose-500 custom-input">
+
+            <input type="email" id="regEmail" placeholder="Email Address" required 
+                   class="w-full p-4 bg-rose-50/50 rounded-2xl border border-rose-100 focus:outline-none focus:ring-2 focus:ring-rose-500 custom-input">
+
+            <input type="tel" id="regPhone" placeholder="Phone Number" required 
+                   class="w-full p-4 bg-rose-50/50 rounded-2xl border border-rose-100 focus:outline-none focus:ring-2 focus:ring-rose-500 custom-input">
+
+            <div class="relative">
+                <input type="password" id="regPassword" placeholder="Set Password (6 Digits)" required 
+                       maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                       class="w-full p-4 bg-rose-50/50 rounded-2xl border border-rose-100 focus:outline-none focus:ring-2 focus:ring-rose-500 custom-input pr-12">
+                <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-rose-500">
+                    <i id="eyeIcon" class="fas fa-eye"></i>
+                </button>
+            </div>
+
+            <button type="submit" class="w-full bg-rose-600 text-white font-bold py-4 rounded-2xl mt-4 hover:shadow-lg transition-all active:scale-95">
+                REGISTER
+            </button>
+        </form>
+    </div>
+
+    <div id="otpModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-[2.5rem] max-w-sm w-full text-center shadow-2xl relative">
+            <button type="button" onclick="backToRegister()" class="absolute top-5 right-6 text-gray-400 hover:text-rose-600 text-xl transition">
+                <i class="fas fa-times-circle"></i>
+            </button>
+            <h3 class="text-2xl font-bold mb-4 text-rose-600">Verify OTP</h3>
+            <p class="text-gray-500 mb-2">Enter code: <span id="otpDisplay" class="font-black text-rose-600 text-xl ml-1"></span></p>
+            <p id="timerDisplay" class="text-[10px] text-gray-400 font-bold mb-6 uppercase tracking-widest">Refreshes in: 30s</p>
+            <input type="text" maxlength="4" id="otpInput" class="w-full text-center text-3xl font-bold tracking-widest border-b-4 border-rose-600 outline-none mb-8 text-gray-800">
+            <button id="verifyBtn" class="w-full bg-rose-600 text-white py-4 rounded-2xl font-bold shadow-lg active:scale-95 transition">VERIFY</button>
+        </div>
+    </div>
+
+    <div id="loginBox" class="w-full max-w-md bg-white p-8 rounded-[2.5rem] shadow-2xl border hidden mx-auto">
+        <div class="flex items-center justify-between mb-8 relative h-12">
+    <a href="index.html" class="text-rose-600 hover:bg-rose-50 p-2 rounded-full transition text-xl z-10">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <h2 class="text-3xl font-bold text-rose-600 absolute inset-0 flex items-center justify-center pointer-events-none">
+        Login
+    </h2>
+    <div class="w-10"></div> </div>
+
+        <div class="space-y-4">
+            <input type="email" id="loginEmail" placeholder="Email" 
+                   class="w-full p-4 bg-rose-50/50 rounded-2xl border border-rose-100 focus:outline-none focus:ring-2 focus:ring-rose-500 custom-input transition">
+
+            <div class="relative">
+                <input type="password" id="loginPw" placeholder="Password" 
+                       class="w-full p-4 bg-rose-50/50 rounded-2xl border border-rose-100 focus:outline-none focus:ring-2 focus:ring-rose-500 custom-input transition pr-12">
+                <button type="button" onclick="toggleLoginPassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-rose-500">
+                    <i id="loginEyeIcon" class="fas fa-eye"></i>
+                </button>
+            </div>
+
+            <button id="finalLoginBtn" class="w-full bg-rose-600 text-white py-4 rounded-2xl font-bold mt-4 shadow-lg active:scale-95 transition">LOGIN</button>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+
+    <script>
+        // 1. Password Visibility Toggle Logic
+        function togglePassword() {
+            const passwordInput = document.getElementById('regPassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        }
+
+        function toggleLoginPassword() {
+            const loginPwInput = document.getElementById('loginPw');
+            const loginEyeIcon = document.getElementById('loginEyeIcon');
+            loginPwInput.type = loginPwInput.type === 'password' ? 'text' : 'password';
+            loginEyeIcon.classList.toggle('fa-eye');
+            loginEyeIcon.classList.toggle('fa-eye-slash');
+        }
+
+        // 2. Navigation Functions
+        function showLogin() {
+            document.getElementById('registerBox').classList.add('hidden');
+            document.getElementById('loginBox').classList.remove('hidden');
+        }
+        
+        function showRegister() {
+            document.getElementById('loginBox').classList.add('hidden');
+            document.getElementById('registerBox').classList.remove('hidden');
+        }
+
+        function backToRegister() {
+            document.getElementById('otpModal').classList.add('hidden');
+            document.getElementById('registerBox').classList.remove('hidden');
+            if (typeof timerInterval !== 'undefined') clearInterval(timerInterval);
+        }
+
+        // 3. Main Initialization
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('mode') === 'login') showLogin();
+
+            // Registration Form Submission
+            const regForm = document.getElementById('registerForm');
+            if (regForm) {
+                regForm.onsubmit = function(e) {
+                    e.preventDefault();
+                    // Let auth.js handle the timer and OTP logic
+                    document.getElementById('otpModal').classList.remove('hidden');
+                    if (typeof startTimer === 'function') startTimer();
+                };
+            }
+            
+            // Note: Login redirection is handled within auth.js 
+            // to ensure credentials are valid before navigating to find-donor.html
+        }
+    </script>
+</body>
+</html>
